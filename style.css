@@ -403,18 +403,13 @@ section { position:relative; z-index:1; padding:110px 32px; max-width:1200px; ma
 .modal-iframe-wrap iframe { width:100%; height:100%; border:none; }
 
 /* ── CONTACT ── */
-.contact-wrap { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start; }
-.contact-info > p { color:var(--muted); font-size:1rem; margin-bottom:28px; line-height:1.72; }
-.contact-links { display:flex; flex-direction:column; gap:12px; }
-.contact-item { display:flex; align-items:center; gap:14px; padding:14px 18px; border:2px solid var(--border); border-left:4px solid var(--gold); background:rgba(200,134,10,.04); text-decoration:none; color:var(--text); transition:var(--t); }
-.contact-item:hover { border-color:var(--gold); background:rgba(200,134,10,.1); transform:translateX(6px); box-shadow:4px 4px 0 var(--red); }
-.contact-icon { font-size:1.2rem; }
-.contact-form { display:flex; flex-direction:column; gap:18px; }
-.form-group { display:flex; flex-direction:column; gap:7px; }
-.form-group label { font-family:var(--pixel); font-size:.5rem; color:var(--gold2); letter-spacing:.06em; }
-.form-group input, .form-group textarea { background:var(--bg3); border:2px solid var(--border); color:var(--text); padding:12px 14px; font-family:var(--body); font-size:.9rem; outline:none; resize:vertical; transition:border-color var(--t),box-shadow var(--t); }
-.form-group input:focus, .form-group textarea:focus { border-color:var(--gold); box-shadow:3px 3px 0 var(--red); }
-.form-note { font-family:var(--pixel); font-size:.5rem; color:var(--gold2); min-height:1.2em; }
+.contact-wrap { display: flex; justify-content: center; align-items: flex-start; text-align: center; }
+.contact-info { max-width: 600px; width: 100%; }
+.contact-info > p { color: var(--muted); font-size: 1rem; margin-bottom: 32px; line-height: 1.72; }
+.contact-links { display: flex; flex-direction: column; gap: 12px; max-width: 500px; margin: 0 auto; }
+.contact-item { display: flex; align-items: center; gap: 14px; padding: 14px 18px; border: 2px solid var(--border); border-left: 4px solid var(--gold); background: rgba(200, 134, 10, .04); text-decoration: none; color: var(--text); transition: var(--t); text-align: left; }
+.contact-item:hover { border-color: var(--gold); background: rgba(200, 134, 10, .1); transform: translateX(6px); box-shadow: 4px 4px 0 var(--red); }
+.contact-icon { font-size: 1.2rem; }
 
 /* ── FOOTER ── */
 #footer { border-top:3px solid var(--gold); padding:36px 32px; text-align:center; position:relative; z-index:1; background:var(--bg2); }
