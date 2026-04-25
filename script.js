@@ -49,25 +49,25 @@ const ctx = canvas.getContext('2d');
 let W, H, particles = [];
 
 function resize() {
-  W = canvas.width  = window.innerWidth;
+  W = canvas.width = window.innerWidth;
   H = canvas.height = window.innerHeight;
 }
 resize();
 window.addEventListener('resize', resize);
 
-const COLORS = ['#c8860a','#f0b429','#8b1a10','#4a8c2a','#e8a020'];
+const COLORS = ['#c8860a', '#f0b429', '#8b1a10', '#4a8c2a', '#e8a020'];
 
 class Particle {
   constructor() { this.reset(); }
   reset() {
-    this.x  = Math.random() * W;
-    this.y  = H + 10;
+    this.x = Math.random() * W;
+    this.y = H + 10;
     this.vy = -(Math.random() * 1.2 + 0.4);
     this.vx = (Math.random() - 0.5) * 0.6;
     this.size = Math.floor(Math.random() * 3 + 1) * 3; // pixel sizes: 3,6,9
     this.alpha = Math.random() * 0.6 + 0.2;
     this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
-    this.life  = 0;
+    this.life = 0;
     this.maxLife = Math.random() * 200 + 100;
   }
   update() {
@@ -77,7 +77,7 @@ class Particle {
   }
   draw() {
     ctx.globalAlpha = this.alpha;
-    ctx.fillStyle   = this.color;
+    ctx.fillStyle = this.color;
     ctx.fillRect(Math.round(this.x), Math.round(this.y), this.size, this.size);
   }
 }
@@ -108,9 +108,9 @@ function countUp(el, target, duration) {
 }
 
 const statConfig = {
-  'stat-games':   { count: 6,    suffix: '' },
-  'stat-years':   { count: 1,    suffix: '' },
-  'stat-players': { count: 300,  suffix: '+' },
+  'stat-games': { count: 6, suffix: '' },
+  'stat-years': { count: 1, suffix: '' },
+  'stat-players': { count: 300, suffix: '+' },
 };
 
 let statsStarted = false;
@@ -156,7 +156,7 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
 
 // ── VIDEO MODAL ──
 const backdrop = document.getElementById('modal-backdrop');
-const iframe   = document.getElementById('modal-iframe');
+const iframe = document.getElementById('modal-iframe');
 const closeBtn = document.getElementById('modal-close');
 
 function openVideo(url) {
@@ -177,21 +177,8 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal()
 window.openVideo = openVideo; // expose globally for inline onclick
 
 // ── CONTACT FORM ──
-function handleFormSubmit(e) {
-  e.preventDefault();
-  const status = document.getElementById('form-status');
-  const btn    = document.getElementById('form-submit');
-  btn.disabled = true;
-  btn.querySelector('span').textContent = 'Sending...';
-  setTimeout(() => {
-    status.textContent = '> Message sent! I\'ll get back to you soon.';
-    btn.querySelector('span').textContent = 'Send Message';
-    btn.disabled = false;
-    e.target.reset();
-    setTimeout(() => { status.textContent = ''; }, 5000);
-  }, 1200);
-}
-window.handleFormSubmit = handleFormSubmit;
+// ── CONTACT FORM ──
+// Removed as per request
 
 // ── PIXEL CURSOR TRAIL ──
 const trail = [];
@@ -222,19 +209,19 @@ function animateWithTrail() {
 }
 // restart loop with trail
 cancelAnimationFrame(window._animFrame);
-(function loop() { window._animFrame = requestAnimationFrame(loop); ctx.clearRect(0,0,W,H); particles.forEach(p=>{p.update();p.draw();}); drawTrail(); })();
+(function loop() { window._animFrame = requestAnimationFrame(loop); ctx.clearRect(0, 0, W, H); particles.forEach(p => { p.update(); p.draw(); }); drawTrail(); })();
 
 // ── CARD HOVER PIXEL SOUND (visual only) & VIDEO PLAY ──
 document.querySelectorAll('.game-card').forEach(card => {
   const video = card.querySelector('.card-video');
-  
+
   card.addEventListener('mouseenter', () => {
     card.style.setProperty('--px-pop', '1');
     if (video) {
       video.play().catch(err => console.log('Video play prevented:', err));
     }
   });
-  
+
   card.addEventListener('mouseleave', () => {
     card.style.removeProperty('--px-pop');
     if (video) {
